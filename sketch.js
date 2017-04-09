@@ -108,6 +108,9 @@ window.onload = function () {
 			if(window.confirm('全て消します。本当によろしいですか？')){	
 			ctx.fillStyle = '#FFF';
 			ctx.fillRect(0,0,w,h);
+			pathLog.push("#FFF",h,0,h/2,[w],[h/2	]);
+			sketchLog.push(pathLog);		
+			pathLog = [];
 			}
 		};
 		//ポインタの座標を取得
@@ -172,6 +175,7 @@ window.onload = function () {
 		//ポインタが動いたら描画
 		canvas.onmousemove = function(e){
 			if(e.buttons === 1){
+			memoryLog = [];
 			ctx.lineTo(offsetX2,offsetY2);
 			lineToXLog.push(offsetX2);
 			lineToYLog.push(offsetY2);
@@ -188,13 +192,13 @@ window.onload = function () {
 			lineToXLog =[];
 			lineToYLog =[];
 		};
-
 		//ポインタが画面外へ出て行った時の挙動
 		canvas.onmouseout = function (e){
 			if(e.buttons === 1){
 			ctx.lineTo(offsetX4,offsetY4);
 			lineToXLog.push(offsetX4);
 			lineToYLog.push(offsetY4);
+			memoryLog = [];
 			ctx.stroke();
 			}
 			pathLog.push(ctx.strokeStyle,ctx.lineWidth,offsetX,offsetY,lineToXLog,lineToYLog);
@@ -207,7 +211,10 @@ window.onload = function () {
 		//ポインタが画面内へ入った時の挙動
 		canvas.onmouseover = function(e){
 			if(e.buttons === 1){
-			ctx.MoveTo
+			 ctx.beginPath();
+			 ctx.moveTo(offsetX5,offsetY5);
+			 offsetX = offsetX5;
+			 offsetY = offsetY5;
 			}
 		}
 		//戻るボタンと進むボタンの挙動
@@ -236,7 +243,6 @@ window.onload = function () {
 				ctx.fillStyle = '#FFF';
 				ctx.fillRect(0,0,w,h);
 				sketchLog.push(memoryLog.pop());
-				console.log('aiu');
 				for (var i = 0; i < sketchLog.length; i++){
 					ctx.beginPath();
 					ctx.strokeStyle = sketchLog[i][0];
@@ -248,9 +254,6 @@ window.onload = function () {
 					ctx.stroke();
 				}
 			}
-		}
-		
-		
+		}	
 	}
 }
-		
