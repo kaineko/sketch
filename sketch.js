@@ -155,6 +155,15 @@ window.onload = function () {
 		offsetX4 = mouseX4 - positionX4;
 		offsetY4 = mouseY4 - positionY4;
 		});
+		canvas.addEventListener('mouseover',function(e){
+		var mouseX5 = e.pageX;
+		var mouseY5 = e.pageY;
+		var canvasRect5 = canvas.getBoundingClientRect();
+		var positionX5 = canvasRect5.left + window.scrollX;
+		var positionY5 = canvasRect5.top + window.scrollY;	
+		offsetX5 = mouseX5 - positionX5;
+		offsetY5 = mouseY5 - positionY5;
+		});
 		//左ボタンが押されたら描画準備
 		canvas.onmousedown = function(e){
 			ctx.beginPath();
@@ -180,19 +189,37 @@ window.onload = function () {
 			lineToYLog =[];
 		};
 
-		//ポインタが画面外へ行った時の挙動
+		//ポインタが画面外へ出て行った時の挙動
 		canvas.onmouseout = function (e){
-		 ctx.beginPath();
+			if(e.buttons === 1){
+			ctx.lineTo(offsetX4,offsetY4);
+			lineToXLog.push(offsetX4);
+			lineToYLog.push(offsetY4);
+			ctx.stroke();
+			}
+			pathLog.push(ctx.strokeStyle,ctx.lineWidth,offsetX,offsetY,lineToXLog,lineToYLog);
+			sketchLog.push(pathLog);
+			pathLog = [];
+			lineToXLog =[];
+			lineToYLog =[];
+			ctx.beginPath();
 		};
-		//戻るボタンの挙動
+		//ポインタが画面内へ入った時の挙動
+		canvas.onmouseover = function(e){
+			if(e.buttons === 1){
+			ctx.MoveTo
+			}
+		}
+		//戻るボタンと進むボタンの挙動
 		var sketchLog = [];//今までの全ての描写情報を保存する配列を用意
 		var pathLog = [];//1つのパスの間の描写情報を保存する配列を用意
 		var lineToXLog = [];//lineTo情報(X)を保存する配列を用意
 		var lineToYLog = [];//lineTo情報(Y)を保存する配列を用意
+		var memoryLog = [];//戻るボタンで消した描写情報を保存する配列を用意
 		back.onclick = function(){
 			ctx.fillStyle = '#FFF';
 			ctx.fillRect(0,0,w,h);
-			sketchLog.pop();
+			memoryLog.push(sketchLog.pop());
 			for (var i = 0; i < sketchLog.length; i++){
 				ctx.beginPath();
 				ctx.strokeStyle = sketchLog[i][0];
@@ -202,6 +229,24 @@ window.onload = function () {
 					ctx.lineTo(sketchLog[i][4][k],sketchLog[i][5][k]);
 				}
 				ctx.stroke();
+			}
+		}
+		go.onclick = function(){
+			if(memoryLog.length > 0){
+				ctx.fillStyle = '#FFF';
+				ctx.fillRect(0,0,w,h);
+				sketchLog.push(memoryLog.pop());
+				console.log('aiu');
+				for (var i = 0; i < sketchLog.length; i++){
+					ctx.beginPath();
+					ctx.strokeStyle = sketchLog[i][0];
+					ctx.lineWidth = sketchLog[i][1];
+					ctx.moveTo(sketchLog[i][2],sketchLog[i][3]);
+					for (var k = 0; k < sketchLog[i][4].length; k++){
+						ctx.lineTo(sketchLog[i][4][k],sketchLog[i][5][k]);
+					}
+					ctx.stroke();
+				}
 			}
 		}
 		
