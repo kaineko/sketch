@@ -2,6 +2,7 @@ html{
 	height:100%;
 }
 body{
+	background-image:url(wood-pattern.jpg);
 	background-color:#808080;
 	height:100%;
 }
@@ -13,9 +14,10 @@ body{
 	float:left;
 }
 #panel > div > button {
+	background-color:#DD8080;
 	font-size:15px;
 	text-align:center;	
-	border-color:#000;
+	border-color:#DD8080;
 	margin:0px;
 	border-radius:25px;
 	width:100%;
@@ -32,9 +34,10 @@ body{
 	cursor:pointer;
 }
 #boldBox > span > button{
+	background-color:#DD8080;
 	font-size:15px;
 	text-align:center;	
-	border-color:#000;
+	border-color:#DD8080;
 	margin:0px;
 	border-radius:25px;
 	width:18%;
@@ -45,8 +48,8 @@ button:hover {
 	background-color:#DDD;
 }
 #colorBox{
-    background-color:#808080;
-    border:1px solid #000;
+    background-color:#E9C385;
+    border:1px solid #E9C385;
     box-shadow: 0 10px 10px #999;
     display:none;
     position:absolute;
@@ -81,8 +84,8 @@ button:hover {
 	background-color:#FFF;
 }
 #boldBox{
-    background-color:#808080;
-    border:1px solid #000;
+    background-color:#E9C385;
+    border:1px solid #E9C385;
     box-shadow: 0 10px 10px #999;
     display:none;
     position:absolute;
