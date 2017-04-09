@@ -174,7 +174,6 @@ window.onload = function () {
 
 		//ポインタが画面外へ行った時の挙動
 		canvas.onmouseout = function (e){
-		 ctx.save();
 		 ctx.beginPath();	
 		}
 	}
