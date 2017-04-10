@@ -265,21 +265,23 @@ window.onload = function () {
 		var lineToYLog = [];//lineTo情報(Y)を保存する配列を用意
 		var memoryLog = [];//戻るボタンで消した描写情報を保存する配列を用意
 		back.onclick = function(){
-			ctx.save(); 
-			ctx.fillStyle = '#FFF';
-			ctx.fillRect(0,0,w,h);
-			memoryLog.push(sketchLog.pop());
-			for (var i = 0; i < sketchLog.length; i++){
-				ctx.beginPath();
-				ctx.strokeStyle = sketchLog[i][0];
-				ctx.lineWidth = sketchLog[i][1];
-				ctx.moveTo(sketchLog[i][2],sketchLog[i][3]);
+			if(sketchLog.length > 0){
+				ctx.save(); 
+				ctx.fillStyle = '#FFF';
+				ctx.fillRect(0,0,w,h);
+				memoryLog.push(sketchLog.pop());
+				for (var i = 0; i < sketchLog.length; i++){
+					ctx.beginPath();
+					ctx.strokeStyle = sketchLog[i][0];
+					ctx.lineWidth = sketchLog[i][1];
+					ctx.moveTo(sketchLog[i][2],sketchLog[i][3]);
 				for (var k = 0; k < sketchLog[i][4].length; k++){
 					ctx.lineTo(sketchLog[i][4][k],sketchLog[i][5][k]);
 				}
 				ctx.stroke();
+				}
+				ctx.restore();
 			}
-			ctx.restore();
 		}
 		go.onclick = function(){
 			ctx.save();
