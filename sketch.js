@@ -284,8 +284,8 @@ window.onload = function () {
 			}
 		}
 		go.onclick = function(){
-			ctx.save();
 			if(memoryLog.length > 0){
+				ctx.save();
 				ctx.fillStyle = '#FFF';
 				ctx.fillRect(0,0,w,h);
 				sketchLog.push(memoryLog.pop());
@@ -299,8 +299,8 @@ window.onload = function () {
 					}
 					ctx.stroke();
 				}
+				ctx.restore();
 			}
-			ctx.restore();
 		}	
 	}
 }
