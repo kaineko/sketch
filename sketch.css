@@ -6,7 +6,9 @@ body{
 	background-color:#808080;
 	height:100%;
 }
-
+#pencil-picture{
+	width:100%;
+}
 #panel{
 	margin:0;
 	width:6%;
