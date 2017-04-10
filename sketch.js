@@ -275,10 +275,10 @@ window.onload = function () {
 					ctx.strokeStyle = sketchLog[i][0];
 					ctx.lineWidth = sketchLog[i][1];
 					ctx.moveTo(sketchLog[i][2],sketchLog[i][3]);
-				for (var k = 0; k < sketchLog[i][4].length; k++){
-					ctx.lineTo(sketchLog[i][4][k],sketchLog[i][5][k]);
-				}
-				ctx.stroke();
+					for (var k = 0; k < sketchLog[i][4].length; k++){
+						ctx.lineTo(sketchLog[i][4][k],sketchLog[i][5][k]);
+					}
+					ctx.stroke();
 				}
 				ctx.restore();
 			}
