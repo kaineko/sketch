@@ -265,6 +265,7 @@ window.onload = function () {
 		var lineToYLog = [];//lineTo情報(Y)を保存する配列を用意
 		var memoryLog = [];//戻るボタンで消した描写情報を保存する配列を用意
 		back.onclick = function(){
+			ctx.save(); 
 			ctx.fillStyle = '#FFF';
 			ctx.fillRect(0,0,w,h);
 			memoryLog.push(sketchLog.pop());
@@ -278,8 +279,10 @@ window.onload = function () {
 				}
 				ctx.stroke();
 			}
+			ctx.restore();
 		}
 		go.onclick = function(){
+			ctx.save();
 			if(memoryLog.length > 0){
 				ctx.fillStyle = '#FFF';
 				ctx.fillRect(0,0,w,h);
@@ -295,6 +298,7 @@ window.onload = function () {
 					ctx.stroke();
 				}
 			}
+			ctx.restore();
 		}	
 	}
 }
