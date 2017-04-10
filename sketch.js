@@ -17,6 +17,7 @@ window.onload = function () {
 	var thick = document.getElementById('thick');
 	var superthick = document.getElementById('superthick');
 	var wrapper = document.getElementById('wrapper');
+	var showingPencil = document.getElementById('showingPencil');
 	//パネルボタンの挙動設定
 	var colorSelect = document.getElementById('colorSelect');
 	var boldSelect = document.getElementById('boldSelect');
@@ -39,6 +40,9 @@ window.onload = function () {
  //お絵かき張本体
 	var canvas = document.getElementById('canvas');	
 	
+	//cursor画像の初期設定
+	canvas.style.cursor = 'url(color_pencils/black95.png) 0 95,auto';
+		
 	var w = wrapper.clientWidth;
 	var h = wrapper.clientHeight;
 	canvas.width = w;
@@ -50,58 +54,91 @@ window.onload = function () {
 		ctx.lineWidth =6;
 		ctx.lineCap = 'round';
 		//色の変更
+			//cursor画像変更のためのメソッド作成(色変更)
+			function getBold(){
+				var beforeColorPencil = canvas.style.cursor;
+				var boldString = beforeColorPencil.match('[0-9]{2,3}')[0];
+				return boldString;
+			}
 		black.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/black' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/black111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#000';
 		};
 		red.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/red' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/red111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#F00';
 		};
 		green.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/green' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/green111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#0F0';
 		};
 		blue.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/blue' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/blue111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#00F';
 		};
 		yellow.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/yellow' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/yellow111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#FF0';
 		};
 		aqua.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/aqua' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/aqua111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#0FF';
 		};
 		purple.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/purple' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/purple111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#F0F';
 		};
 		white.onclick = function(){
+			canvas.style.cursor = 'url(color_pencils/white' + getBold() +'.png) 0 ' + getBold() + ',auto';
+			showingPencil.innerHTML = '<img id = "pencil-picture" src="color_pencils/white111.png">';
 			colorBox.style.display = 'none';
 			ctx.strokeStyle = '#FFF';
 		};
 		//太さの変更
+			//cursor画像変更のためのメソッド作成(太さ変更)
+		function changeBold(boldNum){
+			var beforeBoldPencil = canvas.style.cursor;
+			var afterBoldPencil = beforeBoldPencil.replace(/[0-9]{2,3}/g,boldNum);
+			canvas.style.cursor = afterBoldPencil;
+		}
 		superthin.onclick = function(){
+			changeBold(50);
 			boldBox.style.display = 'none';
 			ctx.lineWidth = 1;
 		};
 		thin.onclick = function(){
+			changeBold(75);
 			boldBox.style.display = 'none';
 			ctx.lineWidth = 3;
 		};
 		middle.onclick = function(){
+			changeBold(95);
 			boldBox.style.display = 'none';
 			ctx.lineWidth = 6;
 		};
 		thick.onclick = function(){
+			changeBold(111);
 			boldBox.style.display = 'none';
 			ctx.lineWidth = 9;
 		};
 		superthick.onclick = function(){
+			changeBold(125);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 12;
+			ctx.lineWidth = 14;
 		};
 		//全消の実装
 		eraseAll.onclick = function(){
@@ -171,6 +208,10 @@ window.onload = function () {
 		canvas.onmousedown = function(e){
 			ctx.beginPath();
 			ctx.moveTo(offsetX,offsetY);
+			ctx.lineTo(offsetX,offsetY);
+			lineToXLog.push(offsetX);
+			lineToYLog.push(offsetY);
+			ctx.stroke();
 		};
 		//ポインタが動いたら描画
 		canvas.onmousemove = function(e){
