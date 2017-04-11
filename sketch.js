@@ -315,5 +315,70 @@ window.onload = function () {
 			var imgUrl =canvas.toDataURL();	
 			window.open(imgUrl);
 		}
+		//塗りつぶしの実装
+		document.onkeydown = function(e){
+			if(e.key === 'f'){
+				rihgtCheck(offsetX,offsetY);
+				downCheck(offsetX,offsetY);
+				leftCheck(offsetX,offsetY);
+				upCheck(offsetX,offsetY);
+				function rihgtCheck(numX,numY){
+					for (var i=0; i < w; i=i+2){
+						var imagedata1 = ctx.getImageData(numX+i,numY,1,1);
+						var imagedata2 = ctx.getImageData(numX+i+2,numY,1,1);
+						if (imagedata1.data[0] === imagedata2.data[0] && imagedata1.data[1] === imagedata2.data[1] && imagedata1.data[3] === imagedata2.data[3]){
+									return false;
+						} else {
+							ctx.beginPath();
+							ctx.moveTo(numX+i,numY);
+							ctx.lineTo(numX+i+2,numY);
+							ctx.stroke();
+						}
+					};
+				}
+				function downCheck(numX,numY){
+					for (var i=0; i < w; i=i+2){
+						var imagedata1 = ctx.getImageData(numX,numY+i,1,1);
+						var imagedata2 = ctx.getImageData(numX,numY+i+2,1,1);
+						if (imagedata1.data[0] === imagedata2.data[0] && imagedata1.data[1] === imagedata2.data[1] && imagedata1.data[3] === imagedata2.data[3]){
+									return false;
+						} else {
+							ctx.beginPath();
+							ctx.moveTo(numX,numY+i);
+							ctx.lineTo(numX,numY+i+2);
+							ctx.stroke();
+						}
+					};
+				}
+				function leftCheck(numX,numY){
+					for (var i=0; i < w; i=i+2){
+						var imagedata1 = ctx.getImageData(numX-i,numY,-1,-1);
+						var imagedata2 = ctx.getImageData(numX-i-2,numY,-1,-1);
+						if (imagedata1.data[0] === imagedata2.data[0] && imagedata1.data[1] === imagedata2.data[1] && imagedata1.data[3] === imagedata2.data[3]){
+									return false;
+						} else {
+							ctx.beginPath();
+							ctx.moveTo(numX-i,numY);
+							ctx.lineTo(numX-i-2,numY);
+							ctx.stroke();
+						}
+					};
+				}
+				function upCheck(numX,numY){
+					for (var i=0; i < w; i=i+2){
+						var imagedata1 = ctx.getImageData(numX,numY-i,-1,-1);
+						var imagedata2 = ctx.getImageData(numX,numY-i-2,-1,-1);
+						if (imagedata1.data[0] === imagedata2.data[0] && imagedata1.data[1] === imagedata2.data[1] && imagedata1.data[3] === imagedata2.data[3]){
+									return false;
+						} else {
+							ctx.beginPath();
+							ctx.moveTo(numX,numY-i);
+							ctx.lineTo(numX,numY-i-2);
+							ctx.stroke();
+						}
+					};
+				}
+			}
+		}
 	}
 }
