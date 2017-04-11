@@ -301,6 +301,7 @@ window.onload = function () {
 				}
 				ctx.restore();
 			}
-		}	
+		}
+		sketchLog.push(memoryLog.pop());
 	}
 }
