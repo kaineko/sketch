@@ -139,7 +139,7 @@ window.onload = function () {
 		superthick.onclick = function(){
 			changeBold(125);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 12;
+			ctx.lineWidth = 14;
 		};
 		//全消の実装
 		eraseAll.onclick = function(){
