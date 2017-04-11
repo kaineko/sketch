@@ -18,6 +18,7 @@ window.onload = function () {
 	var superthick = document.getElementById('superthick');
 	var wrapper = document.getElementById('wrapper');
 	var showingPencil = document.getElementById('showingPencil');
+	var intoImg = document.getElementById('intoImg');
 	//パネルボタンの挙動設定
 	var colorSelect = document.getElementById('colorSelect');
 	var boldSelect = document.getElementById('boldSelect');
@@ -295,6 +296,24 @@ window.onload = function () {
 				}
 				ctx.restore();
 			}
-		}	
+		}
+		//画像化して保存する
+		intoImg.onclick = function(){
+			ctx.fillStyle = '#FFF';
+			ctx.fillRect(0,0,w,h);
+			for (var i = 0; i < sketchLog.length; i++){
+					ctx.beginPath();
+					ctx.strokeStyle = sketchLog[i][0];
+					ctx.lineWidth = sketchLog[i][1];
+					ctx.moveTo(sketchLog[i][2],sketchLog[i][3]);
+					for (var k = 0; k < sketchLog[i][4].length; k++){
+						ctx.lineTo(sketchLog[i][4][k],sketchLog[i][5][k]);
+					}
+					ctx.stroke();
+			}
+			var imgUrl =canvas.toDataURL();	
+			imgUrl.download;
+			window.open(imgUrl);
+		}
 	}
 }
