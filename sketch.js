@@ -119,27 +119,27 @@ window.onload = function () {
 		superthin.onclick = function(){
 			changeBold(50);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 4;
+			ctx.lineWidth = 1;
 		};
 		thin.onclick = function(){
 			changeBold(75);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 6;
+			ctx.lineWidth = 3;
 		};
 		middle.onclick = function(){
 			changeBold(95);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 8;
+			ctx.lineWidth = 6;
 		};
 		thick.onclick = function(){
 			changeBold(111);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 10;
+			ctx.lineWidth = 9;
 		};
 		superthick.onclick = function(){
 			changeBold(125);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 14;
+			ctx.lineWidth = 12;
 		};
 		//全消の実装
 		eraseAll.onclick = function(){
@@ -315,6 +315,7 @@ window.onload = function () {
 			var imgUrl =canvas.toDataURL();	
 			window.open(imgUrl);
 		}
+		/*
 		//塗りつぶしの実装(他に、太さを4.6.8.10.14に変更)
 		document.onkeydown = function(e){
 			if(e.key === 'f'){
@@ -380,5 +381,6 @@ window.onload = function () {
 				}
 			}
 		}
+		*/
 	}
 }
