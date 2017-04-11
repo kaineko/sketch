@@ -119,22 +119,22 @@ window.onload = function () {
 		superthin.onclick = function(){
 			changeBold(50);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 1;
+			ctx.lineWidth = 4;
 		};
 		thin.onclick = function(){
 			changeBold(75);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 3;
+			ctx.lineWidth = 6;
 		};
 		middle.onclick = function(){
 			changeBold(95);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 6;
+			ctx.lineWidth = 8;
 		};
 		thick.onclick = function(){
 			changeBold(111);
 			boldBox.style.display = 'none';
-			ctx.lineWidth = 9;
+			ctx.lineWidth = 10;
 		};
 		superthick.onclick = function(){
 			changeBold(125);
@@ -315,7 +315,7 @@ window.onload = function () {
 			var imgUrl =canvas.toDataURL();	
 			window.open(imgUrl);
 		}
-		//塗りつぶしの実装
+		//塗りつぶしの実装(他に、太さを4.6.8.10.14に変更)
 		document.onkeydown = function(e){
 			if(e.key === 'f'){
 				rihgtCheck(offsetX,offsetY);
