@@ -236,18 +236,12 @@ window.onload = function () {
 		//ポインタが画面外へ出て行った時の挙動
 		canvas.onmouseout = function (e){
 			if(e.buttons === 1){
-			ctx.lineTo(offsetX4,offsetY4);
-			lineToXLog.push(offsetX4);
-			lineToYLog.push(offsetY4);
-			memoryLog = [];
-			ctx.stroke();
-			}
-			pathLog.push(ctx.strokeStyle,ctx.lineWidth,offsetX,offsetY,lineToXLog,lineToYLog);
+			memoryLog = [];	pathLog.push(ctx.strokeStyle,ctx.lineWidth,offsetX,offsetY,lineToXLog,lineToYLog);
 			sketchLog.push(pathLog);
 			pathLog = [];
 			lineToXLog =[];
 			lineToYLog =[];
-			ctx.beginPath();
+			}
 		};
 		//ポインタが画面内へ入った時の挙動
 		canvas.onmouseover = function(e){
@@ -301,7 +295,6 @@ window.onload = function () {
 				}
 				ctx.restore();
 			}
-		}
-		sketchLog.pop();
+		}	
 	}
 }
