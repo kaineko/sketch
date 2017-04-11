@@ -237,7 +237,8 @@ window.onload = function () {
 		//ポインタが画面外へ出て行った時の挙動
 		canvas.onmouseout = function (e){
 			if(e.buttons === 1){
-			memoryLog = [];	pathLog.push(ctx.strokeStyle,ctx.lineWidth,offsetX,offsetY,lineToXLog,lineToYLog);
+			memoryLog = [];
+			pathLog.push(ctx.strokeStyle,ctx.lineWidth,offsetX,offsetY,lineToXLog,lineToYLog);
 			sketchLog.push(pathLog);
 			pathLog = [];
 			lineToXLog =[];
@@ -312,7 +313,6 @@ window.onload = function () {
 					ctx.stroke();
 			}
 			var imgUrl =canvas.toDataURL();	
-			imgUrl.download;
 			window.open(imgUrl);
 		}
 	}
