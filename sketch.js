@@ -400,8 +400,8 @@ window.onload = function () {
 					}
 				}
 		 	}
-				for(var fX = 1;fX < w; fX = fX+3){
-					for(var fY = 1; fY < h; fY = fY+3){
+				for(var fX = 1;fX < w; fX = fX+10){
+					for(var fY = 1; fY < h; fY = fY+10){
 						if ( ctx.isPointInPath(fX,fY)){
 							ctx.lineTo(fX,fY);
 						}
