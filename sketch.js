@@ -318,7 +318,7 @@ window.onload = function () {
 		/*
 		//塗りつぶしの実装(他に、太さを4.6.8.10.14に変更)
 		document.onkeydown = function(e){
-			if(e.key === 'f'){
+			if(e.key === 't'){
 				rihgtCheck(offsetX,offsetY);
 				downCheck(offsetX,offsetY);
 				leftCheck(offsetX,offsetY);
@@ -382,5 +382,33 @@ window.onload = function () {
 			}
 		}
 		*/
+		//塗りつぶしの実装（isPointInPath()メソッドを使ってみる
+		document.onkeydown = function(e){
+			if (e.key === 'f'){
+				//ctx.fillStyle = '#FFF';
+				//ctx.fillRect(0,0,w,h);
+				if(sketchLog.length > 0){
+					var s = sketchLog.length-1;
+					console.log(s);
+					ctx.beginPath();
+					console.log(sketchLog[s][0]);
+					ctx.strokeStyle = sketchLog[s][0];
+					ctx.lineWidth = sketchLog[s][1];
+					ctx.moveTo(sketchLog[s][2],sketchLog[s][3]);
+					for (var k = 0; k < sketchLog[s][4].length; k++){
+						ctx.lineTo(sketchLog[s][4][k],sketchLog[s][5][k]);
+					}
+				}
+		 	}
+				for(var fX = 1;fX < w; fX = fX+3){
+					for(var fY = 1; fY < h; fY = fY+3){
+						if ( ctx.isPointInPath(fX,fY)){
+							ctx.lineTo(fX,fY);
+						}
+					}
+				}
+				ctx.stroke();
+				console.log('押された');
+		}
 	}
 }
