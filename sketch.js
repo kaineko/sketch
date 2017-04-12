@@ -385,8 +385,7 @@ window.onload = function () {
 		//塗りつぶしの実装（isPointInPath()メソッドを使ってみる
 		document.onkeydown = function(e){
 			if (e.key === 'f'){
-				//ctx.fillStyle = '#FFF';
-				//ctx.fillRect(0,0,w,h);
+				ctx.save();
 				if(sketchLog.length > 0){
 					var s = sketchLog.length-1;
 					console.log(s);
@@ -407,7 +406,7 @@ window.onload = function () {
 					}
 				}
 				ctx.stroke();
-				console.log('押された');
+				ctx.restore();
 		}
 	}
 }
