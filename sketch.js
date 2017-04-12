@@ -391,7 +391,7 @@ window.onload = function () {
 					console.log(s);
 					ctx.beginPath();
 					console.log(sketchLog[s][0]);
-					ctx.lineWidth = 4;
+					ctx.lineWidth = 5;
 					ctx.moveTo(sketchLog[s][2],sketchLog[s][3]);
 					for (var k = 0; k < sketchLog[s][4].length; k++){
 						ctx.lineTo(sketchLog[s][4][k],sketchLog[s][5][k]);
