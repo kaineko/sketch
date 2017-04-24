@@ -316,13 +316,13 @@ window.onload = function () {
 			var mydraw = document.createElement('a');
          		var filename = prompt('何というファイル名で保存しますか')
             		if(filename){
-                	mydraw.download = filename+'.png';
-                	mydraw.href = imgUrl;
-                	document.body.appendChild(mydraw);
-                	mydraw.click();
-                	document.body.removeChild(mydraw);
-            		}
-			window.open(imgUrl);
+              	  		mydraw.download = filename+'.png';
+                		mydraw.href = imgUrl;
+                		document.body.appendChild(mydraw);
+                		mydraw.click();
+                		document.body.removeChild(mydraw);
+				window.open(imgUrl);
+			}
 		}
 		/*
 		//塗りつぶしの実装(他に、太さを4.6.8.10.14に変更)
