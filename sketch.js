@@ -313,7 +313,6 @@ window.onload = function () {
 					ctx.stroke();
 			}
 			var imgUrl =canvas.toDataURL();	
-			window.open(imgUrl);
 			var mydraw = document.createElement('a');
          		var filename = prompt('何というファイル名で保存しますか')
             		if(filename){
@@ -323,6 +322,7 @@ window.onload = function () {
                 	mydraw.click();
                 	document.body.removeChild(mydraw);
             		}
+			window.open(imgUrl);
 		}
 		/*
 		//塗りつぶしの実装(他に、太さを4.6.8.10.14に変更)
