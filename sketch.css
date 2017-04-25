@@ -3,9 +3,11 @@ html{
 }
 body{
 	overflow:hidden;
+	position:fixed;
 	background-image:url(wood-pattern.jpg);
 	background-color:#808080;
 	height:100%;
+	width:100%;
 }
 #pencil-picture{
 	width:100%;
@@ -106,7 +108,7 @@ button:hover {
 #wrapper{
 	background-color:#FFF;
 	margin:1% 2% 1% 1%;
-	width:94%;
-	height:97%;
+	width:90%;
+	height:96%;
 	float:left;
 }
